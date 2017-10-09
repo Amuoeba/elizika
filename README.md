@@ -7,13 +7,21 @@ Curently available:
 
 Imports used in the project:
   import re, string, random, glob, operator, heapq
+  
   from collections import defaultdict
+  
   from math import log10
+  
   import functools
+  
   import pickle
+  
   import codecs
+  
   import sys
+  
   import nltk
+  
 
 
 Instructions to use:
