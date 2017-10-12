@@ -17,8 +17,8 @@ class Cypher:
         return initialMap
                 
     def setAlphabet(self,alphabet):
-        """Sets alphabet for the cypher. Accepts a list of characters which represent the alphabet"""
-        self.Alphabet = alphabet
+        """Sets alphabet for the cypher. Accepts a string of alphabet characters"""
+        self.Alphabet = list(alphabet)
     
     def setCustomMap(self,charMap):
         """"Sets Map to a custom map (keys must be all characters found in the cypher text)"""
@@ -46,9 +46,37 @@ class Cypher:
             
             cleanedTups =list(filter(lambda x: len(x[0]) == n,orderTups))
             ntups[n] = cleanedTups        
-        return ntups    
+        return ntups
     
-#TODO Calculate index of coincidence for given cypher text
+    def CalculateIndexOfCoincidence(self,customText=None):
+        """Calculates the index of coincidence for cyphertext. If customText is specified it calculates index of coincidence 
+        for custom text not related to the cyphertext"""
+        if customText:
+            text = customText
+        else:
+            text = self.Text
+        
+        dolzina = len(text)
+        differentLetters = []
+        for j in text:
+            if j not in differentLetters:
+                differentLetters.append(j)        
+        LooneProducts = []
+        for ltr in differentLetters:
+            n = 0
+            for j in text:
+                if j == ltr:
+                    n += 1
+            first = n/dolzina
+            second = (n-1)/(dolzina-1)
+            combined = first * second
+            LooneProducts.append(combined)
+        vsota =  sum(LooneProducts)
+        return vsota*len(self.Alphabet)
+            
+        
+    
+
 #TODO Calculate gap distributions to determine potential vowels
 #TODO Calculate probability of text based on 2-tuples
 #TODO Implement different kinds of prints to eaze manual decoding

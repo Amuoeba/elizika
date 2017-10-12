@@ -14,9 +14,10 @@ CYPHER ="""1!2č47?8=2.794č4t.7928?=
 !85č759395čn49č4!5321?č4
 =262m451532č
 """
-
+alphabet = "abcčdefghijklmnoprsštuvzž"
 
 print("This tool provides you with visual aid for manual decription of substitution cyphers")
 
 newCypher = cypherClass.Cypher(CYPHER)
+newCypher.setAlphabet(alphabet)
 print(newCypher.Ntups)
