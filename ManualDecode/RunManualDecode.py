@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import cypherClass
+import pickle
+import VowelDistribution.vowelDist as vowelDist
 ############################
 # DEFINE YOUR PROBLEM HERE #
 ############################
@@ -15,9 +17,14 @@ CYPHER ="""1!2č47?8=2.794č4t.7928?=
 =262m451532č
 """
 alphabet = "abcčdefghijklmnoprsštuvzž"
+with open("RazdaljeMedSamoglasnikuDUMP.txt","rb") as vowelsData:
+    referenceVowelDistribution = pickle.load(vowelsData)
+  
 
 print("This tool provides you with visual aid for manual decription of substitution cyphers")
 
 newCypher = cypherClass.Cypher(CYPHER)
 newCypher.setAlphabet(alphabet)
 print(newCypher.Ntups)
+print(newCypher.DetermineVowelsByGapDistribution(referenceVowelDistribution))
+

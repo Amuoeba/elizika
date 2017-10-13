@@ -1,3 +1,5 @@
+import VowelDistribution.vowelDist as vowelDist
+
 class Cypher:
     """This class provides basic cypher text analysis"""
     
@@ -7,6 +9,7 @@ class Cypher:
         self.Ntups = self.Ntuples(3,freq=True)
         self.Alphabet = None
         self.Map = self.__InitMap__()
+        self.vowels = ["a","e","i","o","u"]
         
     def __InitMap__(self):
         """Initializes a character map to a blank map where each character maps to "*" """
@@ -73,11 +76,18 @@ class Cypher:
             LooneProducts.append(combined)
         vsota =  sum(LooneProducts)
         return vsota*len(self.Alphabet)
+    
+    def DetermineVowelsByGapDistribution(self,referenceDistribution):
+        analisisTogether = vowelDist.ComputeAverage(referenceDistribution,distrib="combined")
+        dictComb =vowelDist.VowelCombinations(self.Map,self.vowels)
+        textAnalisis = vowelDist.CypherTextVowelDist(self.Text,dictComb,analisisTogether)[:50]
+        mostOFten = vowelDist.whichCharMoreCommon(textAnalisis)
+        return mostOFten
             
         
     
 
-#TODO Calculate gap distributions to determine potential vowels
+
 #TODO Calculate probability of text based on 2-tuples
 #TODO Implement different kinds of prints to eaze manual decoding
 #TODO Implement filter function for dictionary attack
