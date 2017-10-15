@@ -25,6 +25,12 @@ A project for deciphering an old Slovenian letter from the early 20th century (c
   4. run "python RunAutoDecode.py" in terminal, to execute the decoding of default
      example message.
   5. Experiment with you own messages as explained in the "RunAutoDecode.py"
+#### Using the GUI:
+A simple GUI has been implemented. to run it do the following:
+  1. Clone or download the repository
+  2. Navigate to " /SubstitutionCypher Auto Decode "
+  3. run "python AutoDecodeGUI"
+  4. follow instructions displayed in the user interface
   
   
 ## TODOs:
