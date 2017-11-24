@@ -14,9 +14,15 @@ sys.setrecursionlimit(10000)
 
 N=252960
 #for english
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
 N=0
-with open("englishWordCountDump.txt","rb") as myfile:
+
+#alphabet = 'abcdefghijklmnopqrstuvwxyz'
+#with open("englishWordCountDump.txt","rb") as myfile:
+#    WordFrequencies= pickle.load(myfile)
+
+alphabet = 'abcčdefghijklmnoprsštuvzž'    
+with open("./SlovenianCorpus/cankarCountDUMP.txt","rb") as myfile:
     WordFrequencies= pickle.load(myfile)
 
 for i in WordFrequencies:
@@ -90,10 +96,15 @@ def allwords(text):
 
 N1=0
 N2=0
-with open("english2Ndump.txt","rb") as myfile1:
-    N2gramDict= pickle.load(myfile1)
-with open("english3Ndump.txt","rb") as myfile2:
-    N3gramDict= pickle.load(myfile2)
+#with open("english2Ndump.txt","rb") as myfile1:
+#    N2gramDict= pickle.load(myfile1)
+#with open("english3Ndump.txt","rb") as myfile2:
+#    N3gramDict= pickle.load(myfile2)
+
+with open("./SlovenianCorpus/CankarXXtupleDUMP.txt","rb") as myfile:
+    N2gramDict= pickle.load(myfile)
+with open("./SlovenianCorpus/CankarXXXtupleDUMP.txt","rb") as myfile:
+    N3gramDict= pickle.load(myfile)
 
 for i in N2gramDict:
     N2 = N2 + N2gramDict[i]

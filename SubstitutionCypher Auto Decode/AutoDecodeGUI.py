@@ -35,7 +35,6 @@ class Application (tk.Frame):
         
         
         
-        
     def create_widgets(self):
         
         self.instructions = tk.Label(text=
