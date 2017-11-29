@@ -22,7 +22,7 @@ N=0
 #    WordFrequencies= pickle.load(myfile)
 
 alphabet = 'abcčdefghijklmnoprsštuvzž'    
-with open("./SlovenianCorpus/cankarCountDUMP.txt","rb") as myfile:
+with open("./SlovenianCorpus/gigaCountDUMP.txt","rb") as myfile:
     WordFrequencies= pickle.load(myfile)
 
 for i in WordFrequencies:
@@ -101,9 +101,9 @@ N2=0
 #with open("english3Ndump.txt","rb") as myfile2:
 #    N3gramDict= pickle.load(myfile2)
 
-with open("./SlovenianCorpus/CankarXXtupleDUMP.txt","rb") as myfile:
+with open("./SlovenianCorpus/GigaXXtupleDUMP.txt","rb") as myfile:
     N2gramDict= pickle.load(myfile)
-with open("./SlovenianCorpus/CankarXXXtupleDUMP.txt","rb") as myfile:
+with open("./SlovenianCorpus/GigaXXXtupleDUMP.txt","rb") as myfile:
     N3gramDict= pickle.load(myfile)
 
 for i in N2gramDict:
@@ -131,10 +131,12 @@ def logP2grams(words):
 #If verbose is set to true you see the algorithm in action    
 VERBOSE =True
 
+
 def hillSearch(x,f,neighbors,steps=10000):
     """Search for x that maximizes f(x) considering all the neighbours(x)"""
     if VERBOSE:
-    	print("restart")
+          print("restart ")
+          
     fx=f(x)
     neighborhood=iter(neighbors(x))
     for i in range(steps):
@@ -144,7 +146,7 @@ def hillSearch(x,f,neighbors,steps=10000):
             x, fx= x2,fx2
             neighborhood = iter(neighbors(x))
         if VERBOSE and i%500 ==0:
-        	print("Evaluation: ",fx)
+              print("Evaluation: ",fx)
     return x
 
 def neighboring_msgs(msg):
@@ -171,7 +173,7 @@ def shuffled(seq):
     random.shuffle(seq)
     return seq
 
-def decode_subst(msg,steps=4000,restarts=90):
+def decode_subst(msg,steps=4000,restarts=5000):
     """Decode a substitution cypher with random restart hillclimbing"""
     msg="".join(allwords(msg)).lower()
     candidates=[hillSearch(encode(msg,key="".join(shuffled(alphabet))),logP3grams,neighboring_msgs,steps) for _ in range(restarts)]

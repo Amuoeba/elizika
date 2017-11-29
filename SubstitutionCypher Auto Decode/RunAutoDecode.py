@@ -15,7 +15,9 @@ msg8 = 'thisdogisfarawayfromhomeweshouldtrytofindhisownersmaybetheywillevengiveu
 msg9 = 'thisdogisfarawayfromhomeweshouldtrytofindhisownersmaybetheywillevengiveussomerewardwiththemoneywegetwecouldbuyourowndog'
 msg10 = 'thisdogisfarawayfromhomeweshouldtrytofindhisownersmaybetheywillevengiveussomerewardwiththemoneywegetwecouldbuyourowndogithinktakingcareforadogwillstrenghtenourrelationshipaswell'
 
-msg11 = 'vhišojeprineselvelikonovegaznanjašolalsejenamrečvzelouglednišolimamamujeprineslahraneinpijačekerpasevedanihoteloditijeodšelboljkmalu'
+msg11 = 'vhišojeprineselvelikonovegaznanjašolalsejenamrečvzelouglednišolimamamujeprineslahraneinpijačekerpasevedanihoteloditijeodšelboljkmalukonivečvedelkolikodenarjajeimelprisebisejeposvetovalzdirektorjem'
+
+msg12 = 'abcčdefghciejdčdkiejcgfhadlmcafčdkdhlkchcncodecpkčfhfbglčeljmjlčrljčdbslhfecbglčhlkdechlnlšclmcecpkčdphcjlpalmcčmčdjgdhjdgofgacgtgfšbjmtadnlnjdhcmhlutbedntščdacjlčbglčeljmjlčrdjčdblmcafčdhcncodlalmcč'
 
 
 #Select a message from a messages above, or create your own message as in the example below. 
@@ -25,7 +27,7 @@ prepared = prepareString.PrepareString(unprepared)
 
 ########################################
 #This message wil be encoded and decoded
-m=msg11
+m=msg12
 ########################################
 
 #Creates an encoding key for encoding a custom massage
