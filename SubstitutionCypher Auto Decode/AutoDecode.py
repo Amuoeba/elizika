@@ -173,7 +173,7 @@ def shuffled(seq):
     random.shuffle(seq)
     return seq
 
-def decode_subst(msg,steps=4000,restarts=40000):
+def decode_subst(msg,steps=4000,restarts=100):
     """Decode a substitution cypher with random restart hillclimbing"""
     msg="".join(allwords(msg)).lower()
 
