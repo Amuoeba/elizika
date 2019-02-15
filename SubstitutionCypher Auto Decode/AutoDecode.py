@@ -17,13 +17,13 @@ N=252960
 
 N=0
 
-#alphabet = 'abcdefghijklmnopqrstuvwxyz'
-#with open("englishWordCountDump.txt","rb") as myfile:
-#    WordFrequencies= pickle.load(myfile)
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+with open("englishWordCountDump.txt","rb") as myfile:
+   WordFrequencies= pickle.load(myfile)
 
-alphabet = 'abcčdefghijklmnoprsštuvzž'    
-with open("./SlovenianCorpus/gigaCountDUMP.txt","rb") as myfile:
-    WordFrequencies= pickle.load(myfile)
+# alphabet = 'abcčdefghijklmnoprsštuvzž'    
+# with open("./SlovenianCorpus/gigaCountDUMP.txt","rb") as myfile:
+#     WordFrequencies= pickle.load(myfile)
 
 for i in WordFrequencies:
     N = N + WordFrequencies[i]
@@ -96,15 +96,15 @@ def allwords(text):
 
 N1=0
 N2=0
-#with open("english2Ndump.txt","rb") as myfile1:
-#    N2gramDict= pickle.load(myfile1)
-#with open("english3Ndump.txt","rb") as myfile2:
-#    N3gramDict= pickle.load(myfile2)
+with open("english2Ndump.txt","rb") as myfile1:
+   N2gramDict= pickle.load(myfile1)
+with open("english3Ndump.txt","rb") as myfile2:
+   N3gramDict= pickle.load(myfile2)
 
-with open("./SlovenianCorpus/GigaXXtupleDUMP.txt","rb") as myfile:
-    N2gramDict= pickle.load(myfile)
-with open("./SlovenianCorpus/GigaXXXtupleDUMP.txt","rb") as myfile:
-    N3gramDict= pickle.load(myfile)
+# with open("./SlovenianCorpus/GigaXXtupleDUMP.txt","rb") as myfile:
+#     N2gramDict= pickle.load(myfile)
+# with open("./SlovenianCorpus/GigaXXXtupleDUMP.txt","rb") as myfile:
+#     N3gramDict= pickle.load(myfile)
 
 for i in N2gramDict:
     N2 = N2 + N2gramDict[i]
@@ -132,7 +132,7 @@ def logP2grams(words):
 VERBOSE =True
 
 
-def hillSearch(x,f,neighbors,steps=10000):
+def hillSearch(x,f,neighbors,steps=1000):
     """Search for x that maximizes f(x) considering all the neighbours(x)"""
     if VERBOSE:
           print("restart ")
@@ -173,10 +173,16 @@ def shuffled(seq):
     random.shuffle(seq)
     return seq
 
-def decode_subst(msg,steps=4000,restarts=25000):
+def decode_subst(msg,steps=4000,restarts=40000):
     """Decode a substitution cypher with random restart hillclimbing"""
     msg="".join(allwords(msg)).lower()
-    candidates=[hillSearch(encode(msg,key="".join(shuffled(alphabet))),logP3grams,neighboring_msgs,steps) for _ in range(restarts)]
+
+    candidates = []
+    for r in range(restarts):
+        print("Restart {}/{}".format(r,restarts))
+        cand = hillSearch(encode(msg,key="".join(shuffled(alphabet))),logP3grams,neighboring_msgs,steps)
+        candidates.append(cand)
+    
     augCandidates = []
     for candidate in candidates:        
         segmentedCAndidate = segment(candidate)

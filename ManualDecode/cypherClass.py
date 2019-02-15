@@ -6,7 +6,7 @@ class Cypher:
     def __init__(self,text):
         self.Text = text.replace("\n","")
         self.Length = len(self.Text)
-        self.Ntups = self.Ntuples(3,freq=True)
+        self.Ntups = self.Ntuples(3, freq=True)
         self.Alphabet = None
         self.Map = self.__InitMap__()
         self.vowels = ["a","e","i","o","u"]
@@ -27,11 +27,11 @@ class Cypher:
         """"Sets Map to a custom map (keys must be all characters found in the cypher text)"""
         self.Map = charMap
     
-    def Ntuples(self,N,freq=False):
+    def Ntuples(self, N, freq=False):
         """ Returns a dictionary of lists of N-tuples sorted by number of occurances. Starting from 1 up to N.
         If optional parameter freq is set to True N-tuples are returned with coresponding frequencies instead"""
         ntups = {}
-        for n in range(1,N+1):
+        for n in range(1, N+1):
             count = 0
             freqTups={}
             tups = [self.Text[i:i+n] for i in range(0,len(self.Text))]        

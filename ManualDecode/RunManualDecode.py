@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import cypherClass
 import pickle
+import utills.plotters as plotters
+
+
 import VowelDistribution.vowelDist as vowelDist
 ############################
 # DEFINE YOUR PROBLEM HERE #
@@ -16,6 +19,17 @@ CYPHER ="""1!2č47?8=2.794č4t.7928?=
 !85č759395čn49č4!5321?č4
 =262m451532č
 """
+
+CYPHER1 = """
+abcdefey
+gcghijkabclmcnexhgoncxpc
+tmencprjffeseneijkabclkbj
+kemepghretbphdcajrem
+fetfekhteajremamcietfccmetc
+fjhphdcncbghthfgeijtmrm
+mabodhfaggmcbcldotep
+"""
+
 alphabet = "abcčdefghijklmnoprsštuvzž"
 with open("RazdaljeMedSamoglasnikuDUMP.txt","rb") as vowelsData:
     referenceVowelDistribution = pickle.load(vowelsData)
@@ -23,8 +37,19 @@ with open("RazdaljeMedSamoglasnikuDUMP.txt","rb") as vowelsData:
 
 print("This tool provides you with visual aid for manual decription of substitution cyphers")
 
-newCypher = cypherClass.Cypher(CYPHER)
+newCypher = cypherClass.Cypher(CYPHER1)
 newCypher.setAlphabet(alphabet)
-print(newCypher.Ntups)
-print(newCypher.DetermineVowelsByGapDistribution(referenceVowelDistribution))
+# print(newCypher.Ntups)
+# print(newCypher.DetermineVowelsByGapDistribution(referenceVowelDistribution))
+#
 
+for i in range(1, len(newCypher.Ntups)):
+    ntup = newCypher.Ntups[i]
+    x = [z[0] for z in ntup]
+    y = [z[1] for z in ntup]
+    # print(x)
+    # print(y)
+    name = "IF_freq_"+str(i)+"_tup"
+    plotters.bar_freq_plot(x, y, name)
+
+print(len(newCypher.Ntups))
